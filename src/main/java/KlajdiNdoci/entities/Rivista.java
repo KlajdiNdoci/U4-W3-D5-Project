@@ -4,12 +4,15 @@ import KlajdiNdoci.enums.Periodicitá;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Random;
 
 @Entity
 @DiscriminatorValue("Rivista")
 public class Rivista extends Catalogo {
 
+    @Enumerated(EnumType.STRING)
     private Periodicitá periodicitá;
 
     public Rivista(String titolo, Periodicitá periodicitá) {
