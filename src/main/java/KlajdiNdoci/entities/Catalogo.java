@@ -9,6 +9,7 @@ import java.util.Random;
 @DiscriminatorValue("Catalogo")
 public abstract class Catalogo {
     @Id
+    @GeneratedValue
     protected long ISBN;
     protected String titolo;
     protected int annoPubblicazione;
@@ -19,7 +20,6 @@ public abstract class Catalogo {
 
     public Catalogo(String titolo) {
         Random random = new Random();
-        this.ISBN = Math.abs(random.nextLong());
         this.titolo = titolo;
         this.annoPubblicazione = random.nextInt(1800, 2023);
         this.numeroPagine = random.nextInt(100, 800);

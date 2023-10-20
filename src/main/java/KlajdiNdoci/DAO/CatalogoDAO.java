@@ -20,21 +20,21 @@ public class CatalogoDAO {
         System.out.println("Elemento del catalogo salvato correttamente");
     }
 
-    public Catalogo getById(long id) {
-        return em.find(Catalogo.class, id);
+    public Catalogo getByISBN(long ISBN) {
+        return em.find(Catalogo.class, ISBN);
 
     }
 
-    public void delete(long id) {
-        Catalogo selectedEl = em.find(Catalogo.class, id);
+    public void delete(long ISBN) {
+        Catalogo selectedEl = em.find(Catalogo.class, ISBN);
         if (selectedEl != null) {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
             em.remove(selectedEl);
             transaction.commit();
-            System.out.println("L'elemento é stato correttamente cancellato");
+            System.out.println("L'elemento con l'ISBN " + ISBN + " é stato correttamente cancellato");
         } else {
-            System.err.println("L'elemento con l'id " + id + " non esiste");
+            System.err.println("L'elemento con l'ISBN " + ISBN + " non esiste");
         }
     }
 

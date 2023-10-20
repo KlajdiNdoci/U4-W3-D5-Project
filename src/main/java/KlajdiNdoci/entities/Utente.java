@@ -2,27 +2,31 @@ package KlajdiNdoci.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Utente {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "utente_id", nullable = false)
+    private long id;
     private String nome;
     private String cognome;
     private LocalDate DataDiNascita;
-    @Id
     @GeneratedValue
     private long NumeroDiTessera;
     @ManyToMany
     @JoinTable(name = "prestito_utente",
-            joinColumns = @JoinColumn(name = "prestito_id"),
-            inverseJoinColumns = @JoinColumn(name = "utente_id"))
-    private Set<Prestito> prestiti;
+            joinColumns = @JoinColumn(name = "utente_id"),
+            inverseJoinColumns = @JoinColumn(name = "prestito_id"))
+    private Set<Prestito> prestiti = new HashSet<>();
 
-    public Utente(String nome, String cognome, LocalDate dataDiNascita, long numeroDiTessera) {
+    public Utente(String nome, String cognome, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
         DataDiNascita = dataDiNascita;
-        NumeroDiTessera = numeroDiTessera;
     }
 
     public Utente() {
