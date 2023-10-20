@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Random;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Catalogo")
 @DiscriminatorValue("Catalogo")
 public abstract class Catalogo {

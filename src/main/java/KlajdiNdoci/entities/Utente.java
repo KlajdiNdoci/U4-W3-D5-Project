@@ -10,13 +10,12 @@ public class Utente {
 
     @Id
     @GeneratedValue
-    @Column(name = "utente_id", nullable = false)
-    private long id;
+    private long NumeroDiTessera;
     private String nome;
     private String cognome;
     private LocalDate DataDiNascita;
     @GeneratedValue
-    private long NumeroDiTessera;
+
     @ManyToMany
     @JoinTable(name = "prestito_utente",
             joinColumns = @JoinColumn(name = "utente_id"),

@@ -49,9 +49,9 @@ public class Application {
 //            utenteDAO.save(utente3);
 
             Set<Utente> utentiPrestito1 = new HashSet<>();
-            Catalogo elemPrestito1 = catalogoDAO.getByISBN(60);
+            Catalogo elemPrestito1 = catalogoDAO.getByISBN(76);
             System.out.println(elemPrestito1);
-            Utente utenteDB = utenteDAO.getById(65);
+            Utente utenteDB = utenteDAO.getById(80);
             System.out.println(utenteDB);
             if (utenteDB != null) {
                 utentiPrestito1.add(utenteDB);
