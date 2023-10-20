@@ -6,7 +6,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @DiscriminatorValue("Libro")
-@NamedQuery(name = "getByAuthor", query = "SELECT c FROM Catalogo c WHERE c.autore = :author")
+@NamedQuery(name = "getByAuthor", query = "SELECT c FROM Catalogo c WHERE LOWER(autore) = :author")
 public class Libro extends Catalogo {
 
     private String autore;

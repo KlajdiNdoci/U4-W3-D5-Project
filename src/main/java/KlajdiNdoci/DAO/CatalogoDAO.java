@@ -51,7 +51,7 @@ public class CatalogoDAO {
 
     public List<Catalogo> getByAuthor(String author) {
         TypedQuery<Catalogo> getByAuthorQuery = em.createNamedQuery("getByAuthor", Catalogo.class);
-        getByAuthorQuery.setParameter("author", author);
+        getByAuthorQuery.setParameter("author", author.toLowerCase());
         List<Catalogo> results = getByAuthorQuery.getResultList();
         if (!results.isEmpty()) {
 

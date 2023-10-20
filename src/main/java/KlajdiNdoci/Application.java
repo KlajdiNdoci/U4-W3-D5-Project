@@ -63,7 +63,7 @@ public class Application {
 //            utenteDAO.delete(9);
 //            catalogoDAO.getByYear(2011).forEach(System.out::println);
 
-//            catalogoDAO.getByAuthor("Luanne Hahn").forEach(System.out::println);
+//            catalogoDAO.getByAuthor("luanne hahn").forEach(System.out::println);
 //            catalogoDAO.getByTitle("the").forEach(System.out::println);
 
         } catch (Exception ex) {
