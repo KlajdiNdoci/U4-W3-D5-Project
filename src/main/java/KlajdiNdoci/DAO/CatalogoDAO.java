@@ -62,6 +62,19 @@ public class CatalogoDAO {
         }
     }
 
+    public List<Catalogo> getByTitle(String title) {
+        TypedQuery<Catalogo> getByTitleQuery = em.createQuery(
+                "SELECT c FROM Catalogo c WHERE LOWER(titolo) LIKE LOWER(:title)", Catalogo.class);
+        getByTitleQuery.setParameter("title", "%" + title.toLowerCase() + "%");
+        List<Catalogo> results = getByTitleQuery.getResultList();
+        if (!results.isEmpty()) {
+            return getByTitleQuery.getResultList();
+        } else {
+            System.out.println("Non esistono autori con questo nome nel database");
+            return Collections.emptyList();
+        }
+    }
+
 
 }
 
