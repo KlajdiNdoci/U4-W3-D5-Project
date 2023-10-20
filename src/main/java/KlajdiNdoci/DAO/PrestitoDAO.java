@@ -47,4 +47,5 @@ public class PrestitoDAO {
         query.setParameter("today", today);
         return query.getResultList();
     }
+
 }

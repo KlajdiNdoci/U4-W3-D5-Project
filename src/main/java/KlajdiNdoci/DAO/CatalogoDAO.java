@@ -74,17 +74,15 @@ public class CatalogoDAO {
         }
     }
 
-    //NON FUNZIONA
-
-//    public List<Catalogo> getRented() {
-//        TypedQuery<Catalogo> getRentedQuery = em.createQuery(
-//                "SELECT c FROM Catalogo c " +
-//                        "JOIN prestiti p ON c.isbn = p.elemento_prestato_isbn " +
-//                        "JOIN prestito_utente pu ON p.id = pu.prestito_id " +
-//                        "JOIN utenti u ON pu.utente_id = u.numeroditessera " +
-//                        "WHERE p.datarestituzioneeffettiva IS NULL", Catalogo.class);
-//        return getRentedQuery.getResultList();
-//    }
+    public List<Catalogo> getRentedElemsByCard(long card) {
+        TypedQuery<Catalogo> getRentedQuery = em.createQuery(
+                "SELECT c FROM Prestito p " +
+                        "JOIN p.elementoPrestato c " +
+                        "JOIN p.utenti u " +
+                        "WHERE p.dataRestituzioneEffettiva IS NULL AND u.numeroDiTessera = :card", Catalogo.class);
+        getRentedQuery.setParameter("card", card);
+        return getRentedQuery.getResultList();
+    }
 
 }
 

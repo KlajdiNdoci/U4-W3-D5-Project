@@ -11,10 +11,10 @@ public class Utente {
 
     @Id
     @GeneratedValue
-    private long NumeroDiTessera;
+    private long numeroDiTessera;
     private String nome;
     private String cognome;
-    private LocalDate DataDiNascita;
+    private LocalDate dataDiNascita;
     @GeneratedValue
 
     @ManyToMany
@@ -26,7 +26,7 @@ public class Utente {
     public Utente(String nome, String cognome, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
-        DataDiNascita = dataDiNascita;
+        this.dataDiNascita = dataDiNascita;
     }
 
     public Utente() {
@@ -37,8 +37,8 @@ public class Utente {
         return "Utente{" +
                 "nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", DataDiNascita=" + DataDiNascita +
-                ", NumeroDiTessera=" + NumeroDiTessera +
+                ", dataDiNascita=" + dataDiNascita +
+                ", numeroDiTessera=" + numeroDiTessera +
                 '}';
     }
 }
