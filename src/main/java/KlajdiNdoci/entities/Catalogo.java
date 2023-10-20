@@ -1,12 +1,21 @@
 package KlajdiNdoci.entities;
 
+import javax.persistence.*;
 import java.util.Random;
 
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "Catalogo")
+@DiscriminatorValue("Catalogo")
 public abstract class Catalogo {
+    @Id
     protected long ISBN;
     protected String titolo;
     protected int annoPubblicazione;
     protected int numeroPagine;
+
+    public Catalogo() {
+    }
 
     public Catalogo(String titolo) {
         Random random = new Random();

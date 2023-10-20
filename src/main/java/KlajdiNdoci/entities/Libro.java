@@ -1,5 +1,10 @@
 package KlajdiNdoci.entities;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Libro")
 public class Libro extends Catalogo {
 
     private String autore;
@@ -10,6 +15,9 @@ public class Libro extends Catalogo {
         super(titolo);
         this.autore = autore;
         this.genere = genere;
+    }
+
+    public Libro() {
     }
 
     public Libro(long ISBN, String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere) {

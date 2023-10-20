@@ -2,8 +2,12 @@ package KlajdiNdoci.entities;
 
 import KlajdiNdoci.enums.Periodicitá;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.util.Random;
 
+@Entity
+@DiscriminatorValue("Rivista")
 public class Rivista extends Catalogo {
 
     private Periodicitá periodicitá;
@@ -22,6 +26,9 @@ public class Rivista extends Catalogo {
         this.numeroPagine = random.nextInt(20, 100);
     }
 
+
+    public Rivista() {
+    }
 
     public Periodicitá getPeriodicitá() {
         return periodicitá;
