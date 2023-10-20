@@ -4,6 +4,8 @@ import KlajdiNdoci.entities.Catalogo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class CatalogoDAO {
     private final EntityManager em;
@@ -36,6 +38,13 @@ public class CatalogoDAO {
         } else {
             System.err.println("L'elemento con l'ISBN " + ISBN + " non esiste");
         }
+    }
+
+    public List<Catalogo> getByYear(int year) {
+        TypedQuery<Catalogo> getByYearQuery = em.createQuery(
+                "SELECT c FROM Catalogo c WHERE annoPubblicazione = :year", Catalogo.class);
+        getByYearQuery.setParameter("year", year);
+        return getByYearQuery.getResultList();
     }
 
 

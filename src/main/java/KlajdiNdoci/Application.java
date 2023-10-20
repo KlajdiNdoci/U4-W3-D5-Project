@@ -50,9 +50,7 @@ public class Application {
 
             Set<Utente> utentiPrestito1 = new HashSet<>();
             Catalogo elemPrestito1 = catalogoDAO.getByISBN(76);
-            System.out.println(elemPrestito1);
             Utente utenteDB = utenteDAO.getById(80);
-            System.out.println(utenteDB);
             if (utenteDB != null) {
                 utentiPrestito1.add(utenteDB);
             }
@@ -60,10 +58,11 @@ public class Application {
             Prestito prestito1 = new Prestito(utentiPrestito1, elemPrestito1, LocalDate.of(2023, 10, 10), null);
             System.out.println(prestito1);
 //            prestitoDAO.save(prestito1);
+            catalogoDAO.getByYear(2011).forEach(System.out::println);
 
 
 //            catalogoDAO.delete(4);
-//            utenteDAO.delete(9);
+//            utenteDAO.delete(9);5
 
 
         } catch (Exception ex) {
