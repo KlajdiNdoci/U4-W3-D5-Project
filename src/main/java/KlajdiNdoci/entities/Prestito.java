@@ -1,15 +1,17 @@
 package KlajdiNdoci.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-public class Prestito {
+public class Prestito implements Serializable {
     @ManyToMany
     @JoinTable(name = "prestito_utente",
             joinColumns = @JoinColumn(name = "prestito_id"),
             inverseJoinColumns = @JoinColumn(name = "utente_id"))
-    private Utente utente;
+    private Set<Utente> utenti;
 
     @Id
     @ManyToOne
@@ -24,12 +26,20 @@ public class Prestito {
     public Prestito() {
     }
 
-    public Prestito(Utente utente, Catalogo elementoPrestato, LocalDate dataInizioPrestito, LocalDate getDataRestituzioneEffettiva) {
-        this.utente = utente;
+    public Prestito(Set<Utente> utenti, Catalogo elementoPrestato, LocalDate dataInizioPrestito, LocalDate getDataRestituzioneEffettiva) {
+        this.utenti = utenti;
         this.elementoPrestato = elementoPrestato;
         this.dataInizioPrestito = dataInizioPrestito;
         dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = getDataRestituzioneEffettiva;
+    }
+
+    public Set<Utente> getUtenti() {
+        return utenti;
+    }
+
+    public void setUtenti(Set<Utente> utenti) {
+        this.utenti = utenti;
     }
 
     public Catalogo getElementoPrestato() {
@@ -40,13 +50,6 @@ public class Prestito {
         this.elementoPrestato = ElementoPrestato;
     }
 
-    public Utente getUtente() {
-        return utente;
-    }
-
-    public void setUtente(Utente utente) {
-        this.utente = utente;
-    }
 
     public LocalDate getDataInizioPrestito() {
         return dataInizioPrestito;
@@ -72,7 +75,7 @@ public class Prestito {
     @Override
     public String toString() {
         return "Prestito{" +
-                "utente=" + utente +
+                "utente=" + utenti +
                 ", elementoPrestato=" + elementoPrestato +
                 ", dataInizioPrestito=" + dataInizioPrestito +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +
