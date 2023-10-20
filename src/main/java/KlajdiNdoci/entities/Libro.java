@@ -3,8 +3,10 @@ package KlajdiNdoci.entities;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Libri")
 @DiscriminatorValue("Libro")
 @NamedQuery(name = "getByAuthor", query = "SELECT c FROM Catalogo c WHERE LOWER(autore) = :author")
 public class Libro extends Catalogo {

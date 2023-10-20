@@ -15,6 +15,7 @@ public abstract class Catalogo {
     protected int annoPubblicazione;
     protected int numeroPagine;
 
+
     public Catalogo() {
     }
 

@@ -2,13 +2,11 @@ package KlajdiNdoci.entities;
 
 import KlajdiNdoci.enums.Periodicitá;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.util.Random;
 
 @Entity
+@Table(name = "Riviste")
 @DiscriminatorValue("Rivista")
 public class Rivista extends Catalogo {
 

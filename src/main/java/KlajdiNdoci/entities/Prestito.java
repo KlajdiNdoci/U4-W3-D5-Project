@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
+@Table(name = "Prestiti")
 public class Prestito {
     @Id
     @GeneratedValue

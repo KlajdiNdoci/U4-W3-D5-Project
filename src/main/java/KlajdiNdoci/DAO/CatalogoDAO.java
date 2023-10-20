@@ -63,8 +63,7 @@ public class CatalogoDAO {
     }
 
     public List<Catalogo> getByTitle(String title) {
-        TypedQuery<Catalogo> getByTitleQuery = em.createQuery(
-                "SELECT c FROM Catalogo c WHERE LOWER(titolo) LIKE LOWER(:title)", Catalogo.class);
+        TypedQuery<Catalogo> getByTitleQuery = em.createQuery("SELECT c FROM Catalogo c WHERE LOWER(titolo) LIKE LOWER(:title)", Catalogo.class);
         getByTitleQuery.setParameter("title", "%" + title.toLowerCase() + "%");
         List<Catalogo> results = getByTitleQuery.getResultList();
         if (!results.isEmpty()) {
@@ -75,6 +74,17 @@ public class CatalogoDAO {
         }
     }
 
+    //NON FUNZIONA
+
+//    public List<Catalogo> getRented() {
+//        TypedQuery<Catalogo> getRentedQuery = em.createQuery(
+//                "SELECT c FROM Catalogo c " +
+//                        "JOIN prestiti p ON c.isbn = p.elemento_prestato_isbn " +
+//                        "JOIN prestito_utente pu ON p.id = pu.prestito_id " +
+//                        "JOIN utenti u ON pu.utente_id = u.numeroditessera " +
+//                        "WHERE p.datarestituzioneeffettiva IS NULL", Catalogo.class);
+//        return getRentedQuery.getResultList();
+//    }
 
 }
 

@@ -4,6 +4,9 @@ import KlajdiNdoci.entities.Prestito;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.time.LocalDate;
+import java.util.List;
 
 public class PrestitoDAO {
     private final EntityManager em;
@@ -36,5 +39,12 @@ public class PrestitoDAO {
         } else {
             System.err.println("Il prestito con l'id " + id + " non esiste");
         }
+    }
+
+    public List<Prestito> getOverdueRentals() {
+        LocalDate today = LocalDate.now();
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.dataRestituzioneEffettiva IS NULL AND p.dataRestituzionePrevista < :today", Prestito.class);
+        query.setParameter("today", today);
+        return query.getResultList();
     }
 }

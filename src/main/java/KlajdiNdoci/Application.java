@@ -49,13 +49,13 @@ public class Application {
 //            utenteDAO.save(utente3);
 
             Set<Utente> utentiPrestito1 = new HashSet<>();
-            Catalogo elemPrestito1 = catalogoDAO.getByISBN(76);
-            Utente utenteDB = utenteDAO.getById(80);
+            Catalogo elemPrestito1 = catalogoDAO.getByISBN(85);
+            Utente utenteDB = utenteDAO.getById(89);
             if (utenteDB != null) {
                 utentiPrestito1.add(utenteDB);
             }
 
-            Prestito prestito1 = new Prestito(utentiPrestito1, elemPrestito1, LocalDate.of(2023, 10, 10), null);
+            Prestito prestito1 = new Prestito(utentiPrestito1, elemPrestito1, LocalDate.of(2023, 1, 10), null);
 //            prestitoDAO.save(prestito1);
 
 
@@ -65,6 +65,12 @@ public class Application {
 
 //            catalogoDAO.getByAuthor("luanne hahn").forEach(System.out::println);
 //            catalogoDAO.getByTitle("the").forEach(System.out::println);
+
+//            NON FUNZIONA
+//            catalogoDAO.getRented().forEach(System.out::println);
+
+            prestitoDAO.getOverdueRentals().forEach(System.out::println);
+
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
