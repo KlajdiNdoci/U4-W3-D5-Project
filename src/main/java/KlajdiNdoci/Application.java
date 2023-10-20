@@ -56,13 +56,14 @@ public class Application {
             }
 
             Prestito prestito1 = new Prestito(utentiPrestito1, elemPrestito1, LocalDate.of(2023, 10, 10), null);
-            System.out.println(prestito1);
 //            prestitoDAO.save(prestito1);
-            catalogoDAO.getByYear(2011).forEach(System.out::println);
 
 
 //            catalogoDAO.delete(4);
-//            utenteDAO.delete(9);5
+//            utenteDAO.delete(9);
+//            catalogoDAO.getByYear(2011).forEach(System.out::println);
+
+            catalogoDAO.getByAuthor("Luanne Hahn").forEach(System.out::println);
 
 
         } catch (Exception ex) {

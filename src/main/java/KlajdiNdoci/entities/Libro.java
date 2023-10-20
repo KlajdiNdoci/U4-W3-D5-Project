@@ -2,9 +2,11 @@ package KlajdiNdoci.entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 @Entity
 @DiscriminatorValue("Libro")
+@NamedQuery(name = "getByAuthor", query = "SELECT c FROM Catalogo c WHERE c.autore = :author")
 public class Libro extends Catalogo {
 
     private String autore;

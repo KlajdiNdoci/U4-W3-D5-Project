@@ -5,6 +5,7 @@ import KlajdiNdoci.entities.Catalogo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.util.Collections;
 import java.util.List;
 
 public class CatalogoDAO {
@@ -45,6 +46,20 @@ public class CatalogoDAO {
                 "SELECT c FROM Catalogo c WHERE annoPubblicazione = :year", Catalogo.class);
         getByYearQuery.setParameter("year", year);
         return getByYearQuery.getResultList();
+    }
+
+
+    public List<Catalogo> getByAuthor(String author) {
+        TypedQuery<Catalogo> getByAuthorQuery = em.createNamedQuery("getByAuthor", Catalogo.class);
+        getByAuthorQuery.setParameter("author", author);
+        List<Catalogo> results = getByAuthorQuery.getResultList();
+        if (!results.isEmpty()) {
+
+            return getByAuthorQuery.getResultList();
+        } else {
+            System.out.println("Non esistono autori con questo nome nel database");
+            return Collections.emptyList();
+        }
     }
 
 
